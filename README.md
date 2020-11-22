@@ -23,12 +23,15 @@ $ export VAULT_ADDR='http://127.0.0.1:8200'
 $ make enable
 
 # Write a secret to the Mock secrets engine
-$ vault write catzzz-secrets/test hello="world"
+$ vault write catzzz-secrets/kitten key=DoesThisMatter
 Success! Data written to: catzzz/test
 
 # Retrieve secret from Mock secrets engine
-$ vault read catzzz-secrets/test
-Key      Value
----      -----
-hello    world
-```
+$ vault read catzzz-secrets/kitten
+Key    Value
+---    -----
+cat    /\_/\
+( o o )
+==_Y_==
+  '-'
+ ```
