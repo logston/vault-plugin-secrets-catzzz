@@ -4,9 +4,9 @@ import (
 	"os"
 
 	"github.com/hashicorp/go-hclog"
-	mock "github.com/hashicorp/vault-guides/plugins/vault-plugin-secrets-mock"
 	"github.com/hashicorp/vault/api"
 	"github.com/hashicorp/vault/sdk/plugin"
+	catzzz "github.com/logston/vault-plugin-secrets-catzzz"
 )
 
 func main() {
@@ -18,7 +18,7 @@ func main() {
 	tlsProviderFunc := api.VaultPluginTLSProvider(tlsConfig)
 
 	err := plugin.Serve(&plugin.ServeOpts{
-		BackendFactoryFunc: mock.Factory,
+		BackendFactoryFunc: catzzz.Factory,
 		TLSProviderFunc:    tlsProviderFunc,
 	})
 	if err != nil {

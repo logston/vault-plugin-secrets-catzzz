@@ -1,6 +1,6 @@
-# Vault Mock Secrets Plugin
+# Vault Catzzz Secrets Plugin
 
-Mock is an example secrets engine plugin for [HashiCorp Vault](https://www.vaultproject.io/). It is meant for demonstration purposes only and should never be used in production.
+This is an example secrets engine plugin for [HashiCorp Vault](https://www.vaultproject.io/). It is meant for demonstration purposes only and should never be used in production.
 
 ## Usage
 
@@ -9,7 +9,7 @@ All commands can be run using the provided [Makefile](./Makefile). However, it m
 This will build the plugin binary and start the Vault dev server:
 
 ```
-# Build Mock plugin and start Vault dev server with plugin automatically registered
+# Build the plugin and start Vault dev server with plugin automatically registered
 $ make
 ```
 
@@ -23,16 +23,12 @@ $ export VAULT_ADDR='http://127.0.0.1:8200'
 $ make enable
 
 # Write a secret to the Mock secrets engine
-$ vault write mock-secrets/test hello="world"
-Success! Data written to: mock/test
+$ vault write catzzz-secrets/test hello="world"
+Success! Data written to: catzzz/test
 
 # Retrieve secret from Mock secrets engine
-$ vault read mock-secrets/test
+$ vault read catzzz-secrets/test
 Key      Value
 ---      -----
 hello    world
 ```
-
-## License
-
-Mock was contributed to the HashiCorp community by [hasheddan](https://github.com/hasheddan/vault-plugin-secrets-covert). In doing so, the original license has been removed.

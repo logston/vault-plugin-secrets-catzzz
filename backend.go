@@ -1,9 +1,10 @@
-package mock
+package catzzz
 
 import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"math/rand"
 	"strings"
 
 	"github.com/hashicorp/errwrap"
@@ -12,6 +13,21 @@ import (
 	"github.com/hashicorp/vault/sdk/logical"
 )
 
+var catArray = []string{
+	`|\---/|
+| o_o |
+ \_^_/`,
+
+	`/\_/\
+( o.o )
+ > ^ <`,
+
+	` /\_/\
+( o o )
+==_Y_==
+  '-'`,
+}
+
 // backend wraps the backend framework and adds a map for storing key value pairs
 type backend struct {
 	*framework.Backend
@@ -19,9 +35,10 @@ type backend struct {
 	store map[string][]byte
 }
 
+// static check that Factory satisfies the logical.Factory interface
 var _ logical.Factory = Factory
 
-// Factory configures and returns Mock backends
+// Factory configures and returns backends
 func Factory(ctx context.Context, conf *logical.BackendConfig) (logical.Backend, error) {
 	b, err := newBackend()
 	if err != nil {
@@ -139,6 +156,7 @@ func (b *backend) handleWrite(ctx context.Context, req *logical.Request, data *f
 	path := data.Get("path").(string)
 
 	// JSON encode the data
+	req.Data["cat"] = catArray[rand.Intn(len(catArray))]
 	buf, err := json.Marshal(req.Data)
 	if err != nil {
 		return nil, errwrap.Wrapf("json encoding failed: {{err}}", err)

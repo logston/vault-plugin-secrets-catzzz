@@ -1,5 +1,7 @@
 GOARCH = amd64
 
+NAME = vault-plugin-secrets-catzzz
+
 UNAME = $(shell uname -s)
 
 ifndef OS
@@ -15,16 +17,16 @@ endif
 all: fmt build start
 
 build:
-	GOOS=$(OS) GOARCH="$(GOARCH)" go build -o vault/plugins/vault-plugin-secrets-mock cmd/vault-plugin-secrets-mock/main.go
+	GOOS=$(OS) GOARCH="$(GOARCH)" go build -o vault/plugins/$(NAME) cmd/main.go
 
 start:
 	vault server -dev -dev-root-token-id=root -dev-plugin-dir=./vault/plugins
 
 enable:
-	vault secrets enable -path=mock-secrets vault-plugin-secrets-mock
+	vault secrets enable -path=catzzz-secrets $(NAME)
 
 clean:
-	rm -f ./vault/plugins/vault-plugin-secrets-mock
+	rm -f ./vault/plugins/$(NAME)
 
 fmt:
 	go fmt $$(go list ./...)

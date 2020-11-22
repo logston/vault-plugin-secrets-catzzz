@@ -1,6 +1,6 @@
-module github.com/hashicorp/vault-guides/plugins/vault-plugin-secrets-mock
+module github.com/logston/vault-plugin-secrets-catzzz
 
-go 1.12
+go 1.14
 
 require (
 	github.com/hashicorp/errwrap v1.0.0
